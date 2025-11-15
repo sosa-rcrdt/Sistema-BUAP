@@ -7,12 +7,12 @@ const routes: Routes = [
 	// Pantalla principal del login: ''
 	{ path: '', component: LoginScreenComponent, pathMatch: 'full' },
 	// Pantalla de registro
-	{ path: 'registro', component: RegistroUsuariosScreenComponent, pathMatch: 'full' },
+	{ path: 'registro-usuarios', component: RegistroUsuariosScreenComponent, pathMatch: 'full' },
 	// El 'pathMatch: full' indica que la URL debe coincidir por completo.
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule]
 })
 export class AppRoutingModule { }
