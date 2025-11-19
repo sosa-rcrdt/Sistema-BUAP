@@ -9,17 +9,24 @@ import { LoginScreenComponent } from './screens/login-screen/login-screen.compon
 import { RegistroUsuariosScreenComponent } from './screens/registro-usuarios-screen/registro-usuarios-screen.component';
 
 // Elementos De Angular Material
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatButtonModule } from '@angular/material/button';
 import { NavbarComponent } from './partials/navbar/navbar.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { RegistroAdminComponent } from './partials/registro-admin/registro-admin.component';
+import { RegistroAlumnosComponent } from './partials/registro-alumnos/registro-alumnos.component';
+import { RegistroMaestrosComponent } from './partials/registro-maestros/registro-maestros.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginScreenComponent,
     RegistroUsuariosScreenComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegistroAdminComponent,
+    RegistroAlumnosComponent,
+    RegistroMaestrosComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,8 @@ import { NavbarComponent } from './partials/navbar/navbar.component';
     MatIconModule,
     MatDividerModule,
     MatButtonModule,
-    FormsModule
+    FormsModule,
+    MatRadioModule
   ],
   providers: [],
   bootstrap: [AppComponent]

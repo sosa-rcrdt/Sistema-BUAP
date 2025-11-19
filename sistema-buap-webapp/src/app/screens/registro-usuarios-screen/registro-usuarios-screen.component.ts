@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatRadioChange } from '@angular/material/radio';
 
 @Component({
   selector: 'app-registro-usuarios-screen',
@@ -7,4 +8,38 @@ import { Component } from '@angular/core';
 })
 export class RegistroUsuariosScreenComponent {
 
+  public tipo:string = "registro-usuarios";
+  //JSON para los usuarios (admin, maestros, alumnos)
+  public user:any ={};
+
+  public isUpdate:boolean = false;
+  public errors:any = {};
+  //Banderas para el tipo de usuario
+  public isAdmin:boolean = false;
+  public isAlumno:boolean = false;
+  public isMaestro:boolean = false;
+  public editar: boolean = false;
+  public tipo_user:string = "";
+  //Info del usuario
+  public idUser: Number = 0;
+  public rol: string = "";
+
+  public radioChange(event: MatRadioChange) {
+    if(event.value == "administrador"){
+      this.isAdmin = true;
+      this.tipo_user = "administrador"
+      this.isAlumno = false;
+      this.isMaestro = false;
+    }else if (event.value == "alumno"){
+      this.isAdmin = false;
+      this.isAlumno = true;
+      this.tipo_user = "alumno"
+      this.isMaestro = false;
+    }else if (event.value == "maestro"){
+      this.isAdmin = false;
+      this.isAlumno = false;
+      this.isMaestro = true;
+      this.tipo_user = "maestro"
+    }
+  }
 }
