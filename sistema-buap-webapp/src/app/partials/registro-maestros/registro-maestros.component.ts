@@ -86,6 +86,19 @@ export class RegistroMaestrosComponent implements OnInit{
     //Validar la contraseña
     if(this.maestro.password == this.maestro.confirmar_password){
       //Aquí si todo es correcto vamos a registrar - aquí se manda a llamar al servicio
+      this.maestrosService.registrarMaestro(this.maestro).subscribe(
+        (response)=>{
+          alert("Usuario registrado correctamente");
+          console.log("Usuario registrado: ", response);
+          if(this.token != ""){
+            this.router.navigate(["home"]);
+           }else{
+             this.router.navigate(["/"]);
+           }
+        }, (error)=>{
+          alert("No se pudo registrar usuario");
+        }
+      )
     }else{
       alert("Las contraseñas no coinciden");
       this.maestro.password="";
@@ -94,14 +107,6 @@ export class RegistroMaestrosComponent implements OnInit{
   }
 
   public actualizar(){
-    //Validación
-    this.errors = [];
-
-    this.errors = this.maestrosService.validarMaestro(this.maestro, this.editar);
-    if(!$.isEmptyObject(this.errors)){
-      return false;
-    }
-    console.log("Pasó la validación");
   }
 
   public checkboxChange(event:any){

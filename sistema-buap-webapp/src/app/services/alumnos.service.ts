@@ -116,4 +116,10 @@ export class AlumnosService {
     //Return arreglo
     return error;
   }
+
+  //Aquí van los servicios HTTP
+  //Servicio para registrar un nuevo alumno
+  public registrarAlumno (data: any): Observable <any>{
+    return this.http.post<any>(`${environment.url_api}/alumnos/`,data, httpOptions);
+  }
 }

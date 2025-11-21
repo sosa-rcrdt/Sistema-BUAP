@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Location } from '@angular/common';
 import { AdministradoresService } from 'src/app/services/administradores.service';
+import { Location } from '@angular/common';
 declare var $:any;
 
 @Component({
@@ -47,6 +47,7 @@ export class RegistroAdminComponent implements OnInit{
     }
     //Imprimir datos en consola
     console.log("Admin: ", this.admin);
+
   }
 
   //Funciones para password
@@ -89,7 +90,24 @@ export class RegistroAdminComponent implements OnInit{
 
     //Validar la contraseña
     if(this.admin.password == this.admin.confirmar_password){
-      // Validar
+      //Aquí se va a ejecutar la lógica de programación para registrar un usuario
+      this.administradoresService.registrarAdmin(this.admin).subscribe(
+        (response)=>{
+          //Aquí va la ejecución del servicio si todo es correcto
+          alert("Usuario registrado correctamente");
+          console.log("Usuario registrado: ", response);
+          if(this.token != ""){
+            this.router.navigate(["home"]);
+          }else{
+            this.router.navigate(["/"]);
+          }
+        }, (error)=>{
+          //Aquí se ejecuta el error
+          alert("No se pudo registrar usuario");
+        }
+      );
+
+
     }else{
       alert("Las contraseñas no coinciden");
       this.admin.password="";
@@ -98,7 +116,6 @@ export class RegistroAdminComponent implements OnInit{
   }
 
   public actualizar(){
-
   }
 
   public soloLetras(event: KeyboardEvent) {
