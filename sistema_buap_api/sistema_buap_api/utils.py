@@ -30,7 +30,7 @@ class Utils:
             content_type = "video/mp4"
         else:
             content_type = "application/octet-stream"
-        
+
         return content_type
 
     @staticmethod

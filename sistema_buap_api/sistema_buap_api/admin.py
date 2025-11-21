@@ -1,11 +1,4 @@
 from django.contrib import admin
-from django.utils.html import format_html
-from sistema_buap_api.models import Profiles
+from sistema_buap_api.models import *
 
-
-@admin.register(Profiles)
-
-class ProfilesAdmin(admin.ModelAdmin):
-    list_display = ("id", "user", "creation", "update")
-    search_fields = ("user__username", "user__email", "user__first_name", "user__last_name")
-
+admin.site.register(Administradores)
