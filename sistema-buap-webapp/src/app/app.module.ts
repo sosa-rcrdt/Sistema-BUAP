@@ -28,6 +28,7 @@ import { MatNativeDateModule } from '@angular/material/core';
 
 //Para usar el mask
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
     NavbarComponent,
     RegistroAdminComponent,
     RegistroAlumnosComponent,
-    RegistroMaestrosComponent
+    RegistroMaestrosComponent,
+    HomeScreenComponent
   ],
   imports: [
     BrowserModule,

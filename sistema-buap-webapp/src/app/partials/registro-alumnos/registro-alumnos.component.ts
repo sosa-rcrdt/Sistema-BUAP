@@ -82,9 +82,9 @@ export class RegistroAlumnosComponent implements OnInit{
           console.log("Usuario registrado: ", response);
           if(this.token != ""){
             this.router.navigate(["home"]);
-           }else{
-             this.router.navigate(["/"]);
-           }
+          }else{
+            this.router.navigate(["/"]);
+          }
         }, (error)=>{
           alert("No se pudo registrar usuario");
         }
