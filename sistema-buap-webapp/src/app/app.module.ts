@@ -25,10 +25,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 //Para usar el mask
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
+
+//Cambia el idioma a español
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+
 import { HomeScreenComponent } from './screens/home-screen/home-screen.component';
+import { AdminScreenComponent } from './screens/admin-screen/admin-screen.component';
+import { AlumnosScreenComponent } from './screens/alumnos-screen/alumnos-screen.component';
+import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-screen.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +49,10 @@ import { HomeScreenComponent } from './screens/home-screen/home-screen.component
     RegistroAdminComponent,
     RegistroAlumnosComponent,
     RegistroMaestrosComponent,
-    HomeScreenComponent
+    HomeScreenComponent,
+    AdminScreenComponent,
+    AlumnosScreenComponent,
+    MaestrosScreenComponent
   ],
   imports: [
     BrowserModule,
@@ -56,9 +69,13 @@ import { HomeScreenComponent } from './screens/home-screen/home-screen.component
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    NgxMaskDirective
+    NgxMaskDirective,
+    MatDialogModule,
+    MatTableModule,
+    MatPaginatorModule,
   ],
   providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
     provideNgxMask()
   ],
   bootstrap: [AppComponent]
