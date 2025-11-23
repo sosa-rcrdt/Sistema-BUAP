@@ -115,3 +115,12 @@ class AlumnosViewEdit(generics.CreateAPIView):
         user = AlumnoSerializer(alumno, many=False).data
 
         return Response({"alumno_updated_id": alumno.id }, 200)
+
+    # Eliminar Alumno
+    def delete(self, request, *args, **kwargs):
+            profile = get_object_or_404(Alumnos, id=request.GET.get("id"))
+            try:
+                profile.user.delete()
+                return Response({"details":"Alumno eliminado"},200)
+            except Exception as e:
+                return Response({"details":"Algo pasó al eliminar"},400)
