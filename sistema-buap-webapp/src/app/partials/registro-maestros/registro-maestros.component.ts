@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MaestrosService } from 'src/app/services/maestros.service';
+import { FacadeService } from 'src/app/services/facade.service';
 declare var $:any;
 
 @Component({
@@ -52,6 +53,7 @@ export class RegistroMaestrosComponent implements OnInit{
     private router: Router,
     private location : Location,
     public activatedRoute: ActivatedRoute,
+    private facadeService: FacadeService
   ){}
 
   ngOnInit(): void {
@@ -66,6 +68,7 @@ export class RegistroMaestrosComponent implements OnInit{
     }else{
       this.maestro = this.maestrosService.esquemaMaestro();
       this.maestro.rol = this.rol;
+      this.token = this.facadeService.getSessionToken();
     }
     //Imprimir datos en consola
     console.log("Maestro: ", this.maestro);
@@ -92,9 +95,9 @@ export class RegistroMaestrosComponent implements OnInit{
           console.log("Usuario registrado: ", response);
           if(this.token != ""){
             this.router.navigate(["home"]);
-           }else{
-             this.router.navigate(["/"]);
-           }
+            }else{
+              this.router.navigate(["/"]);
+            }
         }, (error)=>{
           alert("No se pudo registrar usuario");
         }
@@ -106,7 +109,27 @@ export class RegistroMaestrosComponent implements OnInit{
     }
   }
 
+  // Editar
   public actualizar(){
+    //Validación
+    this.errors = [];
+
+    this.errors = this.maestrosService.validarMaestro(this.maestro, this.editar);
+    if(!$.isEmptyObject(this.errors)){
+      return false;
+    }
+    console.log("Pasó la validación");
+
+    this.maestrosService.editarMaestro(this.maestro).subscribe(
+      (response)=>{
+        alert("Maestro editado correctamente");
+        console.log("Maestro editado: ", response);
+        //Si se editó, entonces mandar al home
+        this.router.navigate(["home"]);
+      }, (error)=>{
+        alert("No se pudo editar el maestro");
+      }
+    );
   }
 
   public checkboxChange(event:any){

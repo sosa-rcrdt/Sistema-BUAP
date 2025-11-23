@@ -98,6 +98,7 @@ export class MaestrosScreenComponent implements OnInit{
     );
   }
 
+  // Editar
   public goEditar(idUser: number){
     this.router.navigate(["registro-usuarios/maestro/"+idUser]);
   }

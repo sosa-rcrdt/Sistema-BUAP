@@ -130,4 +130,17 @@ export class AlumnosService {
     var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
     return this.http.get<any>(`${environment.url_api}/lista-alumnos/`, {headers:headers});
   }
+
+  //Obtener un solo alumno dependiendo su ID
+  public getAlumnoByID(idUser: Number){
+    return this.http.get<any>(`${environment.url_api}/alumnos/?id=${idUser}`,httpOptions);
+  }
+
+  //Servicio para actualizar un usuario
+  public editarAlumno (data: any): Observable <any>{
+    var token = this.facadeService.getSessionToken();
+    console.log("Token en editar alumno: ", token);
+    var headers = new HttpHeaders({ 'Content-Type': 'application/json' , 'Authorization': 'Bearer '+token});
+    return this.http.put<any>(`${environment.url_api}/alumnos-edit/`, data, {headers:headers});
+  }
 }

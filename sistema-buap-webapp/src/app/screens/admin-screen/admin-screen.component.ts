@@ -39,7 +39,7 @@ export class AdminScreenComponent implements OnInit{
     );
   }
 
-
+  // Editar
   public goEditar(idUser: number){
     this.router.navigate(["registro-usuarios/administrador/"+idUser]);
   }

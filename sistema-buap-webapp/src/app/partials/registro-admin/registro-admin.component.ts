@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdministradoresService } from 'src/app/services/administradores.service';
+import { FacadeService } from 'src/app/services/facade.service';
 import { Location } from '@angular/common';
 declare var $:any;
 
@@ -30,6 +31,7 @@ export class RegistroAdminComponent implements OnInit{
     private router: Router,
     private location : Location,
     public activatedRoute: ActivatedRoute,
+    private facadeService: FacadeService
   ){}
 
   ngOnInit(): void {
@@ -44,6 +46,7 @@ export class RegistroAdminComponent implements OnInit{
     }else{
       this.admin = this.administradoresService.esquemaAdmin();
       this.admin.rol = this.rol;
+      this.token = this.facadeService.getSessionToken();
     }
     //Imprimir datos en consola
     console.log("Admin: ", this.admin);
@@ -116,6 +119,25 @@ export class RegistroAdminComponent implements OnInit{
   }
 
   public actualizar(){
+    //Validación
+    this.errors = [];
+
+    this.errors = this.administradoresService.validarAdmin(this.admin, this.editar);
+    if(!$.isEmptyObject(this.errors)){
+      return false;
+    }
+    console.log("Pasó la validación");
+
+    this.administradoresService.editarAdmin(this.admin).subscribe(
+      (response)=>{
+        alert("Administrador editado correctamente");
+        console.log("Admin editado: ", response);
+        //Si se editó, entonces mandar al home
+        this.router.navigate(["home"]);
+      }, (error)=>{
+        alert("No se pudo editar el administrador");
+      }
+    );
   }
 
   public soloLetras(event: KeyboardEvent) {

@@ -35,7 +35,7 @@ class AlumnosAll(generics.CreateAPIView):
     def get(self, request, *args, **kwargs):
         alumnos = Alumnos.objects.filter(user__is_active = 1).order_by("id")
         lista = AlumnoSerializer(alumnos, many=True).data
-        
+
         return Response(lista, 200)
 
 class AlumnosView(generics.CreateAPIView):
@@ -46,7 +46,7 @@ class AlumnosView(generics.CreateAPIView):
         alumno = AlumnoSerializer(alumno, many=False).data
 
         return Response(alumno, 200)
-    
+
     #Registrar nuevo usuario
     @transaction.atomic
     def post(self, request, *args, **kwargs):
@@ -94,3 +94,24 @@ class AlumnosView(generics.CreateAPIView):
             return Response({"alumno_created_id": alumno.id }, 201)
 
         return Response(user.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class AlumnosViewEdit(generics.CreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    @transaction.atomic
+    def put(self, request, *args, **kwargs):
+        alumno = get_object_or_404(Alumnos, id = request.data.get("id"))
+        alumno.matricula= request.data["matricula"]
+        alumno.curp= request.data["curp"].upper()
+        alumno.rfc= request.data["rfc"].upper()
+        alumno.fecha_nacimiento= request.data["fecha_nacimiento"]
+        alumno.edad= request.data["edad"]
+        alumno.telefono= request.data["telefono"]
+        alumno.ocupacion= request.data["ocupacion"]
+        alumno.save()
+        temp = alumno.user
+        temp.first_name = request.data['first_name']
+        temp.last_name = request.data['last_name']
+        temp.save()
+        user = AlumnoSerializer(alumno, many=False).data
+
+        return Response({"alumno_updated_id": alumno.id }, 200)

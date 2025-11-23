@@ -51,7 +51,7 @@ class MaestrosView(generics.CreateAPIView):
         maestro = MaestroSerializer(maestro, many=False).data
         maestro["materias_json"] = json.loads(maestro["materias_json"])
         return Response(maestro, 200)
-    
+
     #Registrar nuevo usuario
     @transaction.atomic
     def post(self, request, *args, **kwargs):
@@ -99,3 +99,24 @@ class MaestrosView(generics.CreateAPIView):
             return Response({"maestro_created_id": maestro.id }, 201)
 
         return Response(user.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class MaestrosViewEdit(generics.CreateAPIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    def put(self, request, *args, **kwargs):
+        # iduser=request.data["id"]
+        maestro = get_object_or_404(Maestros, id=request.data["id"])
+        maestro.id_trabajador = request.data["id_trabajador"]
+        maestro.fecha_nacimiento = request.data["fecha_nacimiento"]
+        maestro.telefono = request.data["telefono"]
+        maestro.rfc = request.data["rfc"]
+        maestro.cubiculo = request.data["cubiculo"]
+        maestro.area_investigacion = request.data["area_investigacion"]
+        maestro.materias_json = json.dumps(request.data["materias_json"])
+        maestro.save()
+        temp = maestro.user
+        temp.first_name = request.data["first_name"]
+        temp.last_name = request.data["last_name"]
+        temp.save()
+        user = MaestroSerializer(maestro, many=False).data
+
+        return Response(user,200)
