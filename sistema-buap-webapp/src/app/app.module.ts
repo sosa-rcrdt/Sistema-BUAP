@@ -42,6 +42,7 @@ import { MaestrosScreenComponent } from './screens/maestros-screen/maestros-scre
 import { EliminarUserModalComponent } from './modals/eliminar-user-modal/eliminar-user-modal.component';
 import { GraficasScreenComponent } from './screens/graficas-screen/graficas-screen.component';
 import { NgChartsModule } from 'ng2-charts';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { NgChartsModule } from 'ng2-charts';
     MatTableModule,
     MatPaginatorModule,
     NgChartsModule,
+    MatSnackBarModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},

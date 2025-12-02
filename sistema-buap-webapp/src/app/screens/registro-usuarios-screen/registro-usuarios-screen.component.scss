@@ -1,80 +1,143 @@
-.wrapper{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+.registration-page {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 
-.section-registro{
-    width: 100vw;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+/* Navbar arriba */
+.registration-header {
+flex-shrink: 0;
 }
 
-.header-registro{
-    width: 100vw;
-    height: 10vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+/* Cuerpo de la página */
+.registration-main {
+flex: 1;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-xl);
+gap: var(--spacing-lg);
 }
 
-.body-registro{
-    width: 100vw;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+/* ====== Slider / carrusel ====== */
+
+.registration-hero {
+width: 100%;
+display: flex;
+justify-content: center;
 }
 
-.img-slider{
-    width: 900px;
-    height: 630px;
+.registration-carousel {
+width: 100%;
+max-width: 900px;
+border-radius: var(--radius-lg);
+overflow: hidden;
+box-shadow: var(--shadow-soft);
+background: #000;
 }
 
-//Radio buttons
-.title-user{
-    font-size: 28px;
-    text-align: center;
-    font-family: Nexa-Bold;
-    letter-spacing: 2px;
-    color: #231F20;
-    text-transform: uppercase;
-    opacity: 1;
+.img-slider {
+width: 100%;
+height: 430px;
+object-fit: cover;
 }
 
-.container{
-    width: 50vw;
+/* Ajuste de indicadores para que no queden pegados al borde */
+.registration-carousel .carousel-indicators {
+bottom: 12px;
 }
+
+/* ====== Tipo de usuario + formularios ====== */
+
+.registration-roles {
+width: 100%;
+display: flex;
+justify-content: center;
+}
+
+.registration-roles-inner {
+width: 100%;
+max-width: 900px;
+text-align: center;
+}
+
+/* Título (mantenemos estilo Nexa-Bold y mayúsculas) */
+.title-user {
+font-size: 1.4rem;
+text-align: center;
+font-family: 'Nexa-Bold', var(--font-family-base);
+letter-spacing: 0.15em;
+color: var(--color-text);
+text-transform: uppercase;
+margin-top: var(--spacing-lg);
+margin-bottom: var(--spacing-md);
+}
+
+/* Radio group centrado */
+.registration-radio-group {
+display: flex;
+justify-content: center;
+margin-bottom: var(--spacing-lg);
+}
+
+/* Formularios inyectados */
+.forms-registro {
+margin-top: var(--spacing-md);
+}
+
+/* Puedes usar estas clases para espaciar los partials si hace falta */
+.registro-admin,
+.registro-alumnos,
+.registro-maestros {
+margin-bottom: var(--spacing-lg);
+}
+
+/* ====== Estilos Angular Material radio ====== */
+/* Colores adaptados al tema */
+
 ::ng-deep .mat-mdc-radio-button .mdc-form-field {
-    color: #231F20;
-    font-family: Nexa;
-    font-size: 20px;
+color: var(--color-text);
+font-family: var(--font-family-base);
+font-size: 0.95rem;
 }
 
 ::ng-deep .mat-mdc-radio-button.mat-accent {
-    --mdc-radio-selected-focus-icon-color: #0092B8;
-    --mdc-radio-selected-hover-icon-color: #0092B8;
-    --mdc-radio-selected-icon-color: #0092B8;
-    --mdc-radio-selected-pressed-icon-color: #0092B8;
-    --mat-radio-ripple-color: #000;
-    --mat-radio-checked-ripple-color: #0092B8;
+--mdc-radio-selected-focus-icon-color: var(--color-primary);
+--mdc-radio-selected-hover-icon-color: var(--color-primary);
+--mdc-radio-selected-icon-color: var(--color-primary);
+--mdc-radio-selected-pressed-icon-color: var(--color-primary);
+--mat-radio-ripple-color: #000;
+--mat-radio-checked-ripple-color: var(--color-primary);
 }
 
 ::ng-deep .mdc-radio {
-    display: inline-block;
-    position: relative;
-    flex: 0 0 auto;
-    box-sizing: content-box;
-    width: 20px;
-    height: 28px!important;
-    cursor: pointer;
-    will-change: opacity,transform,border-color,color;
+display: inline-block;
+position: relative;
+flex: 0 0 auto;
+box-sizing: content-box;
+width: 20px;
+height: 28px !important;
+cursor: pointer;
+will-change: opacity, transform, border-color, color;
+}
+
+/* ====== Responsivo ====== */
+
+@media (max-width: 991.98px) {
+.registration-main {
+    padding: var(--spacing-lg);
+}
+
+.img-slider {
+    height: 260px;
+}
+
+.title-user {
+    font-size: 1.2rem;
+    letter-spacing: 0.12em;
+}
+
+::ng-deep .mat-mdc-radio-button .mdc-form-field {
+    font-size: 0.9rem;
+}
 }

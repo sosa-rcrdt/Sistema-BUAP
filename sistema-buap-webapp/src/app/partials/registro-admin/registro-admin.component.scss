@@ -1,108 +1,118 @@
-.wrapper{
-    height: 100%;
-    width: 100%;
-    //Flex
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-start;
-    background-color: #FFFFFF;
+/* Contenedor general: centra el formulario */
+.wrapper {
+width: 100%;
+display: flex;
+justify-content: center;
+align-items: flex-start;
 }
 
-.section-registro{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+/* Card del formulario */
+.section-registro {
+width: 100%;
+max-width: 960px; /* un poco más ancho */
+background: var(--color-surface);
+border-radius: var(--radius-lg);
+box-shadow: var(--shadow-soft);
+padding: var(--spacing-xl);
+margin-top: var(--spacing-lg);
+margin-bottom: var(--spacing-xl);
 }
 
-.body-registro{
-    width: 100%;
-    height: 90vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding-top: 1.5rem;
-    gap: 1.5rem;
+/* Cuerpo interno */
+.body-registro {
+width: 100%;
+display: flex;
+flex-direction: column;
+align-items: stretch;
+gap: 1rem;
 }
 
-.title-user{
-    font-size: 28px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 2px;
-    color: #231F20;
-    text-transform: capitalize;
-    opacity: 1;
+/* Título */
+.title-user {
+font-size: 1.4rem;
+text-align: left;
+font-family: 'Nexa-Bold', var(--font-family-base);
+letter-spacing: 0.12em;
+color: var(--color-text);
+text-transform: capitalize;
 }
 
-mat-form-field{
-    width: 100%!important;
-    height: 48px!important;
-    text-align: left!important;
+/* Campos Angular Material */
+mat-form-field {
+width: 100%;
 }
 
-//Esto es para las materias
-.title-materias{
-    font-size: 18px;
-    text-align: center;
-    font-family: Nexa-Bold;
-    letter-spacing: 2px;
-    color: #231F20;
-    opacity: 1;
-}
-
-//Para la sección de botones
-.section-buttons{
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 3rem;
-}
-
-.btn-primary {
-    width: 208px;
-    height: 48px;
-    background-color: #0092B8!important;
-    border-color: #0092B8!important;
-    border-radius: 8px!important;
-    opacity: 1;
-    //Fuente
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-}
-
-.btn-primary:hover {
-    background-color: #017895!important;
-    border-color: #017895!important;
-
-}
-
-.btn-danger{
-    width: 208px;
-    height: 48px;
-    border-radius: 8px!important;
-    opacity: 1;
-    //Fuente
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 16px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    color: #FFFFFF;
-    opacity: 1;
-}
-
+/* Un poco más de aire entre campos y errores */
 .mat-hint-margin {
-    margin-bottom: 1rem;
+margin-bottom: 0.25rem;
+}
+
+/* Botón de ojo clickeable */
+.eye-icon {
+cursor: pointer;
+}
+
+/* Sección de botones */
+.section-buttons {
+width: 100%;
+margin-top: 1.5rem;
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+gap: 1rem;
+padding-bottom: 0.5rem;
+}
+
+/* Estilo local de botones (no tocamos el .btn-primary global) */
+.section-buttons .btn {
+min-width: 170px;
+height: 44px;
+border-radius: 999px;
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.95rem;
+}
+
+/* Cancelar: rojo */
+.section-buttons .btn-danger {
+background: var(--color-danger);
+border: none;
+color: #ffffff;
+}
+
+.section-buttons .btn-danger:hover {
+opacity: 0.9;
+}
+
+/* Registrar / Actualizar: usamos colores del tema */
+.section-buttons .btn-primary {
+background: var(--color-primary);
+border: none;
+color: #ffffff;
+}
+
+.section-buttons .btn-primary:hover {
+background: #1e40af; /* un poco más oscuro */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+.section-registro {
+    padding: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.title-user {
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.section-buttons {
+    flex-direction: column-reverse;
+    align-items: stretch;
+}
+
+.section-buttons .btn {
+    width: 100%;
+}
 }

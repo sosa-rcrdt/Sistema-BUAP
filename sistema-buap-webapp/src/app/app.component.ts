@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlertOverrideService } from './services/alert.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sistema-buap-webapp';
+    constructor(private alertOverride: AlertOverrideService) { }
 }

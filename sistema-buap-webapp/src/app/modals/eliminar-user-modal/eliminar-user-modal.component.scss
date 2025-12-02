@@ -1,95 +1,118 @@
-.wrapper{
-    padding: 5px
-}
-//Estilo para quitar margenes al mat dialog
+/* Quitar padding default del dialog y darle estilo de tarjeta */
 ::ng-deep .mat-dialog-container {
-    padding: 0!important;
-    margin: 0!important;
+padding: 0 !important;
+margin: 0 !important;
+border-radius: 18px !important;
+box-shadow: var(--shadow-soft);
+overflow: hidden;
 }
 
-.body-modal{
-    display: flex;
-    flex-direction: column;
+/* Wrapper interno */
+.modal-wrapper {
+padding: var(--spacing-md);
+min-width: 320px;
+}
+
+/* Header con botón de cerrar */
+.modal-header {
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+
+.modal-close-btn {
+border: none;
+background: transparent;
+cursor: pointer;
+padding: 0.25rem;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+}
+
+.modal-close-btn .bi-x-lg {
+color: var(--color-danger);
+font-size: 1rem;
+}
+
+/* Cuerpo del modal */
+.modal-body {
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+padding-inline: var(--spacing-md);
+padding-bottom: var(--spacing-md);
+}
+
+.modal-title {
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 1.4rem;
+margin-bottom: 0.75rem;
+color: var(--color-text);
+}
+
+.modal-description {
+font-family: var(--font-family-base);
+font-size: 0.95rem;
+color: var(--color-text-muted);
+margin: 0 0 1.25rem 0;
+}
+
+/* Botones */
+.modal-actions {
+width: 100%;
+display: flex;
+justify-content: center;
+gap: 0.75rem;
+}
+
+/* Botón cancelar */
+.btn-regresar {
+min-width: 130px;
+height: 44px;
+border-radius: 999px;
+background: #f6f4f5;
+box-shadow: 0 6px 10px #4f480733;
+border: 1px solid #f6f4f5;
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.8rem;
+text-transform: uppercase;
+color: var(--color-danger) !important;
+}
+
+/* Botón eliminar */
+.btn-eliminar {
+min-width: 130px;
+height: 44px;
+border-radius: 999px;
+background: var(--color-danger);
+box-shadow: 0 12px 20px #4e071433;
+border: 1px solid var(--color-danger);
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.8rem;
+text-transform: uppercase;
+color: #ffffff !important;
+}
+
+/* Hover suave */
+.btn-regresar:hover {
+filter: brightness(0.98);
+}
+
+.btn-eliminar:hover {
+filter: brightness(1.03);
+}
+
+/* Responsivo: botones apilados */
+@media (max-width: 480px) {
+.modal-actions {
+    flex-direction: column-reverse;
+    align-items: stretch;
+}
+
+.btn-regresar,
+.btn-eliminar {
     width: 100%;
-    justify-content: center;
-    text-align: center;
-    padding-right: 15px;
-    padding-left: 15px;
 }
-.icon-close{
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: flex-end;
-}
-
-.bi-x-lg{
-    color: #E84150 !important;
-    font-size: 18px!important;
-}
-
-.title-modal{
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 24px;
-    font-weight: bold;
-    letter-spacing: -0.72px;
-    color: #406779;
-    opacity: 1;
-}
-
-.descripcion{
-    text-align: center;
-    font-family: Nexa;
-    font-size: 16px;
-    letter-spacing: 0px;
-    color: #000000;
-    opacity: 1;
-    margin-bottom: 20px;
-}
-
-.buttons-modal{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    gap: 20px;
-}
-
-.btn-regresar{
-    margin-top: 20px;
-    width: 132px;
-    height: 48px;
-    background: #F6F4F5 0% 0% no-repeat padding-box;
-    box-shadow: 0px 6px 10px #4F480733;
-    border: 1px solid #F6F4F5;
-    opacity: 1;
-    //Fuentes
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    color: #E84150!important;
-    text-transform: uppercase;
-    opacity: 1;
-}
-
-.btn-eliminar{
-    margin-top: 20px;
-    width: 132px;
-    height: 48px;
-    background: #E84150 0% 0% no-repeat padding-box;
-    box-shadow: 0px 12px 20px #4E071433;
-    border: 1px solid #E84150;
-    opacity: 1;
-    //Fuentes
-    text-align: center;
-    font-family: Nexa-Bold;
-    font-size: 14px;
-    font-weight: bold;
-    letter-spacing: 0px;
-    color: #FFFFFF!important;
-    text-transform: uppercase;
-    opacity: 1;
 }

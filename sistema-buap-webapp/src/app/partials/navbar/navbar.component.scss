@@ -1,82 +1,173 @@
-.wrapper{
-    width: 100vw;
-    //height: 100vh;
-}
-.bg-light{
-    background-color: #003B5C!important;
+.app-navbar {
+width: 100%;
 }
 
-.navbar{
-    padding: 0 0 0 0!important;
+/* Barra principal */
+
+.app-navbar-bar {
+background-color: #003b5c; // azul institucional BUAP
+padding-top: 0;
+padding-bottom: 0;
+box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
 }
 
-.navbar-brand{
-    padding-left: 20px;
-    font-size: 28px;
-    font-family: Nexa;
-    text-align: center;
-    opacity: 1;
-    color: #FFFFFF;
-    margin: 0 0 0 0!important;
-}
-.nav-link{
-    font-size: 20px;
-    font-family: Nexa;
-    text-align: center;
-    opacity: 1;
-    font-weight: bold;
-    color: #FFFFFF;
-    margin: 0 0 0 0!important;
+.app-navbar-inner {
+padding-block: 0.4rem;
 }
 
-li a {
-    display: block;
-    text-decoration: none;
-    cursor: pointer;
-    text-transform: capitalize;
+/* Título en modo "registro de usuarios" */
+
+.navbar-title {
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 1.3rem;
+color: #ffffff;
+margin: 0;
+white-space: nowrap;
 }
 
-/* Change the link color on hover */
-li a:hover {
-    background-color: #0092B8;
-    color: #FFFFFF;
-    margin: 0;
+/* Links de navegación */
+
+.app-navbar-links {
+display: flex;
+align-items: center;
+gap: 0.25rem;
 }
 
-.navbar-expand-lg .navbar-nav .nav-link {
-    padding-top: 1.2rem;
-    padding-bottom: 1.2rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-}
-.navbar-nav .nav-link.active, .navbar-nav .nav-link.show {
-    font-size: 20px;
-    font-family: Nexa;
-    text-align: center;
-    opacity: 1;
-    font-weight: bold;
-    color: #FFFFFF;
-}
-.active {
-    background-color: #03aed8;
-    margin: 0 0 0 0!important;
+.app-navbar-links .nav-link {
+position: relative;
+padding: 0.9rem 1.1rem;
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.95rem;
+color: #e5f2fb;
+text-align: center;
+cursor: pointer;
+transition:
+    color 0.15s ease,
+    background 0.15s ease;
 }
 
-.bi-person-circle{
-    font-size: 20pt;
-    color: #FFFFFF;
+/* subrayado suave en hover/activo */
+.app-navbar-links .nav-link::after {
+content: '';
+position: absolute;
+left: 1.1rem;
+right: 1.1rem;
+bottom: 0.15rem;
+height: 3px;
+border-radius: 999px;
+background: var(--color-accent);
+opacity: 0;
+transform: scaleX(0.6);
+transition:
+    opacity 0.15s ease,
+    transform 0.15s ease;
 }
-.dropdown-toggle{
-    font-size: 15pt;
-    color: #FFFFFF;
+
+.app-navbar-links .nav-link:hover,
+.app-navbar-links .nav-link:focus {
+color: #ffffff;
 }
-.dropdown-menu[data-bs-popper] {
-    right: 0!important;
-    left: auto;
+
+.app-navbar-links .nav-link:hover::after {
+opacity: 0.5;
+transform: scaleX(1);
 }
-.navbar-toggler-icon{
-    color: #FFFFFF;
+
+/* estado activo (clase .active que ya usas) */
+.app-navbar-links .nav-link.active {
+color: #ffffff;
 }
+
+.app-navbar-links .nav-link.active::after {
+opacity: 1;
+transform: scaleX(1);
+}
+
+/* Menú usuario (icono arriba derecha) */
+
+.app-navbar-user {
+display: flex;
+align-items: center;
+}
+
+.user-menu-trigger {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding-inline: 0.75rem;
+padding-block: 0.35rem;
+border-radius: 999px;
+border: 1px solid rgba(255, 255, 255, 0.35);
+background: transparent;
+color: #ffffff;
+font-size: 0.9rem;
+}
+
+.user-menu-trigger:hover {
+background: rgba(15, 23, 42, 0.2);
+}
+
+.user-menu-trigger .bi-person-circle {
+font-size: 1.4rem;
+}
+
+/* Dropdown */
+
+.dropdown-menu {
+min-width: 10rem;
+font-size: 0.9rem;
+cursor: pointer;
+}
+
+.dropdown-menu-end {
+right: 0;
+left: auto;
+}
+
+/* Toggler (mobile) */
+
+.navbar-toggler {
+border-color: rgba(255, 255, 255, 0.5);
+padding: 0.3rem 0.6rem;
+}
+
+.navbar-toggler:focus {
+box-shadow: 0 0 0 0.1rem rgba(255, 255, 255, 0.5);
+}
+
 .navbar-toggler-icon {
-    vertical-align: 0;
+filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* Responsivo */
+
+@media (max-width: 991.98px) {
+.app-navbar-inner {
+    padding-inline: var(--spacing-md);
+}
+
+.navbar-title {
+    font-size: 1.1rem;
+    margin-top: 0.3rem;
+}
+
+.app-navbar-links {
+    gap: 0;
+}
+
+.app-navbar-links .nav-link {
+    text-align: left;
+    padding-inline: 0.75rem;
+}
+}
+
+@media (min-width: 992px) {
+.app-navbar-inner {
+    padding-inline: var(--spacing-xl);
+}
+}
+
+.app-navbar,
+.app-navbar-bar {
+  min-width: 100vw;
 }

@@ -1,104 +1,173 @@
-.wrapper{
-    width: 100vw;
-    height: 90vh;
+.teachers-home {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 
-.header-home{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
+/* Navbar */
+.teachers-home-header {
+flex-shrink: 0;
 }
 
-.body-alumnos{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
+/* Contenido principal */
+.teachers-home-main {
+flex: 1;
+padding-top: var(--spacing-lg);
 }
 
-.container{
-    max-width: 90vw;
-}
-.title-perfil{
-    margin-left: 3rem;
-    font-size: 32px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 0px;
-    color: #231F20;
-    text-transform: capitalize;
-    opacity: 1;
+/* ====== Bloque de bienvenida ====== */
+
+.teachers-hero {
+margin-left: 10px;
+margin-top: var(--spacing-lg);
+margin-bottom: var(--spacing-lg);
 }
 
-.title-table{
-    margin-left: 3rem;
-    font-size: 28px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 0px;
-    color: #231F20;
-    text-transform: capitalize;
-    opacity: 1;
+.teachers-hero-text {
+max-width: 80%;
+margin: 0 auto;
 }
 
-//Estilos de la tabla
-table {
-    width: 100%;
-    padding-bottom: 1.5rem;
+.teachers-hero-title {
+font-size: 2.1rem;
+font-family: 'Nexa-Bold', var(--font-family-base);
+margin-bottom: 0.35rem;
 }
 
-// .mat-elevation-z8{
-//     width: 100%;
-// }
-::ng-deep .mat-mdc-table{
-    table-layout: fixed!important;
-}
-.mat-mdc-header-cell {
-    border-bottom-color: #231F20;
-    font-family: Nexa-Bold!important;
-    font-size: 18px;
-    text-align: left;
-    letter-spacing: 0px;
-    color: #231F20;
-    opacity: 1;
+.teachers-hero-role {
+margin-left: 0.25rem;
+font-size: 1rem;
+padding: 0.15rem 0.6rem;
+border-radius: 999px;
+background: var(--color-primary-soft);
+color: var(--color-primary);
 }
 
-.mat-mdc-cell {
-    text-align: left;
-    font-family: Nexa!important;
-    font-size: 15px!important;
-    letter-spacing: 0px!important;
-    color: #231F20!important;
-    opacity: 1!important;
+.teachers-hero-subtitle {
+font-size: 1.05rem;
+color: var(--color-text-muted);
 }
 
-//Editar
-.td-editar{
-    color: #0092B8!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+/* ====== Tabla de maestros ====== */
+
+.teachers-table-section {
+max-width: 80%;
+margin: 0 auto;
 }
 
-.td-editar:hover{
-    color: #006179!important;
-    font-size: 25px!important;
-    text-align: center;
+.teachers-table-header {
+margin-bottom: var(--spacing-sm);
 }
 
-//Eliminar
-.td-eliminar{
-    color: #E84150!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    text-align: center;
+/* Títulos card */
+.teachers-table-section .card-title {
+font-size: 1.1rem;
 }
 
-.td-eliminar:hover{
-    color: #ce1626!important;
-    font-size: 25px!important;
-    text-align: center;
+.teachers-table-section .card-subtitle {
+font-size: 0.85rem;
+}
+
+/* Scroll horizontal solo en tabla */
+.table-wrapper {
+width: 100%;
+overflow-x: auto;
+}
+
+/* Tabla Angular Material */
+.teachers-table {
+width: 100%;
+}
+
+/* Forzar layout agradable */
+::ng-deep .teachers-table.mat-mdc-table {
+table-layout: fixed;
+}
+
+/* Encabezados y celdas */
+::ng-deep .teachers-table .mat-mdc-header-cell {
+border-bottom-color: #231f20;
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.9rem;
+text-align: left;
+letter-spacing: 0;
+color: var(--color-text);
+opacity: 1;
+white-space: nowrap;
+}
+
+::ng-deep .teachers-table .mat-mdc-cell {
+text-align: left;
+font-family: var(--font-family-base);
+font-size: 0.9rem;
+letter-spacing: 0;
+color: var(--color-text);
+opacity: 1;
+white-space: nowrap;
+}
+
+/* Centrar columnas de acciones */
+.teachers-table-actions {
+text-align: center;
+}
+
+/* Paginador */
+.teachers-paginator {
+margin-top: var(--spacing-sm);
+}
+
+/* ====== Botones de icono (editar / eliminar) ====== */
+
+.icon-button {
+border: none;
+background: transparent;
+cursor: pointer;
+padding: 0.25rem;
+border-radius: 999px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+transition:
+    background 0.12s ease,
+    transform 0.08s ease;
+}
+
+.icon-button i {
+font-size: 1.1rem;
+}
+
+/* Editar: azul */
+.icon-button-edit i {
+color: var(--color-primary);
+}
+
+.icon-button-edit:hover {
+background: rgba(37, 99, 235, 0.08);
+transform: translateY(-1px);
+}
+
+/* Eliminar: rojo */
+.icon-button-delete i {
+color: var(--color-danger);
+}
+
+.icon-button-delete:hover {
+background: rgba(220, 38, 38, 0.08);
+transform: translateY(-1px);
+}
+
+/* ====== Responsivo ====== */
+
+@media (max-width: 768px) {
+.teachers-hero-title {
+    font-size: 1.6rem;
+}
+
+.teachers-hero-text {
+    padding-inline: var(--spacing-md);
+}
+
+.teachers-table-section {
+    margin-top: var(--spacing-md);
+}
 }

@@ -1,103 +1,169 @@
-.wrapper{
-    width: 100vw;
-    height: 90vh;
+.admin-home {
+min-height: 100vh;
+display: flex;
+flex-direction: column;
 }
 
-.header-home{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    width: 100%;
+/* Navbar */
+.admin-home-header {
+flex-shrink: 0;
 }
 
-.body-admin{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 100%;
+/* Contenido principal */
+.admin-home-main {
+flex: 1;
+padding-top: var(--spacing-lg);
 }
 
-.container{
-    max-width: 90vw;
+/* ====== Bloque de bienvenida ====== */
+
+.admin-hero {
+margin-left: 10px;
+margin-top: var(--spacing-lg);        /* separación desde la navbar */
+margin-bottom: var(--spacing-lg);
 }
 
-.title-perfil{
-    margin-left: 3rem;
-    font-size: 32px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 0px;
-    color: #231F20;
-    text-transform: capitalize;
-    opacity: 1;
+.admin-hero-text {
+max-width: 80%;
+margin: 0 auto;
 }
 
-.title-table{
-    margin-left: 3rem;
-    font-size: 28px;
-    text-align: left;
-    font-family: Nexa-Bold;
-    letter-spacing: 0px;
-    color: #231F20;
-    text-transform: capitalize;
-    opacity: 1;
+.admin-hero-title {
+font-size: 2.1rem;
+font-family: 'Nexa-Bold', var(--font-family-base);
+margin-bottom: 0.35rem;
 }
 
-thead{
-    border-bottom: #231F20;
-}
-tr td{
-    height: 3rem;
-}
-
-th{
-    font-family: Nexa-Bold!important;
-    font-size: 18px;
-    text-align: left;
-    letter-spacing: 0px;
-    color: #231F20;
-    opacity: 1;
-}
-td{
-    text-align: left;
-    font-family: Nexa!important;
-    font-size: 15px!important;
-    letter-spacing: 0px!important;
-    color: #231F20!important;
-    opacity: 1!important;
-    padding-top: 18px;
+.admin-hero-role {
+margin-left: 0.25rem;
+font-size: 1rem;
+padding: 0.15rem 0.6rem;
+border-radius: 999px;
+background: var(--color-primary-soft);
+color: var(--color-primary);
 }
 
-//Editar
-.td-editar{
-    color: #0092B8!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    padding-left: 1.5rem;
-    //text-align: center;
+.admin-hero-subtitle {
+font-size: 1.05rem;
+color: var(--color-text-muted);
 }
 
-.td-editar:hover{
-    color: #006179!important;
-    font-size: 25px!important;
-    padding-left: 1.5rem;
-    //text-align: center;
+/* ====== Tabla de administradores ====== */
+
+.admin-table-section {
+max-width: 80%;
+margin: 0 auto;
 }
 
-//Eliminar
-.td-eliminar{
-    color: #E84150!important;
-    cursor: pointer!important;
-    font-size: 20px!important;
-    padding-left: 1.5rem;
-    //text-align: center;
+.admin-table-header {
+margin-bottom: var(--spacing-sm);
 }
 
-.td-eliminar:hover{
-    color: #ce1626!important;
-    font-size: 25px!important;
-    padding-left: 1.5rem;
-    //text-align: center;
+/* Alineación títulos */
+.admin-table-section .card-title {
+font-size: 1.1rem;
+}
+
+.admin-table-section .card-subtitle {
+font-size: 0.85rem;
+}
+
+/* Asegurar scroll horizontal solo en la tabla si es necesario */
+.table-wrapper {
+width: 100%;
+overflow-x: auto;
+}
+
+/* Ajustes de la tabla específica de admin */
+.admin-table th,
+.admin-table td {
+white-space: nowrap;
+}
+
+.admin-table th {
+font-family: 'Nexa-Bold', var(--font-family-base);
+font-size: 0.9rem;
+color: var(--color-text);
+}
+
+.admin-table td {
+font-family: var(--font-family-base);
+font-size: 0.9rem;
+color: var(--color-text);
+}
+
+/* Centrar columnas de acciones */
+.admin-table-actions {
+text-align: center;
+}
+
+/* Celda de mensaje vacío */
+.admin-table-empty {
+padding: 1rem;
+text-align: center;
+font-size: 0.9rem;
+color: var(--color-text-muted);
+}
+
+/* Botones de icono (editar / eliminar) */
+.icon-button {
+border: none;
+background: transparent;
+cursor: pointer;
+padding: 0.25rem;
+border-radius: 999px;
+display: inline-flex;
+align-items: center;
+justify-content: center;
+transition:
+background 0.12s ease,
+transform 0.08s ease;
+}
+
+.icon-button i {
+font-size: 1.1rem;
+}
+
+/* Editar: azul */
+.icon-button-edit i {
+color: var(--color-primary);
+}
+
+.icon-button-edit:hover {
+background: rgba(37, 99, 235, 0.08);
+transform: translateY(-1px);
+}
+
+/* Eliminar: rojo */
+.icon-button-delete i {
+color: var(--color-danger);
+}
+
+.icon-button-delete:hover {
+background: rgba(220, 38, 38, 0.08);
+transform: translateY(-1px);
+}
+
+td.td-editar{
+text-align: center;
+}
+
+td.td-eliminar{
+text-align: center;
+}
+
+/* ====== Responsivo ====== */
+
+@media (max-width: 768px) {
+.admin-hero-title {
+font-size: 1.6rem;                  /* sigue un poco más grande en mobile */
+}
+
+.admin-hero-text {
+padding-inline: var(--spacing-md);
+}
+
+.admin-table-section {
+margin-top: var(--spacing-md);
+}
 }

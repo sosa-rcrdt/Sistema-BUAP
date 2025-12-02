@@ -1,51 +1,389 @@
-//Font face general
+/* ===========================
+   Fuentes Nexa
+   =========================== */
+
 @font-face {
-    font-family: 'Nexa-Bold';
-    src: url('/assets/fonts/NexaBold.eot');
-    src: url('/assets/fonts/NexaBold.eot?#iefix') format('embedded-opentype'),
-        url('/assets/fonts/NexaBold.woff2') format('woff2'),
-        url('/assets/fonts/NexaBold.woff') format('woff'),
-        url('/assets/fonts/NexaBold.ttf') format('truetype'),
-        url('/assets/fonts/NexaBold.svg#NexaBold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nexa-Bold';
+  src: url('/assets/fonts/NexaBold.eot');
+  src:
+    url('/assets/fonts/NexaBold.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/NexaBold.woff2') format('woff2'),
+    url('/assets/fonts/NexaBold.woff') format('woff'),
+    url('/assets/fonts/NexaBold.ttf') format('truetype'),
+    url('/assets/fonts/NexaBold.svg#NexaBold') format('svg');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Nexa-Light';
-    src: url('/assets/fonts/NexaLight.eot');
-    src: url('/assets/fonts/NexaLight.eot?#iefix') format('embedded-opentype'),
-        url('/assets/fonts/NexaLight.woff2') format('woff2'),
-        url('/assets/fonts/NexaLight.woff') format('woff'),
-        url('/assets/fonts/NexaLight.ttf') format('truetype'),
-        url('/assets/fonts/NexaLight.svg#NexaLight') format('svg');
-    font-weight: 300;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nexa-Light';
+  src: url('/assets/fonts/NexaLight.eot');
+  src:
+    url('/assets/fonts/NexaLight.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/NexaLight.woff2') format('woff2'),
+    url('/assets/fonts/NexaLight.woff') format('woff'),
+    url('/assets/fonts/NexaLight.ttf') format('truetype'),
+    url('/assets/fonts/NexaLight.svg#NexaLight') format('svg');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
-    font-family: 'Nexa';
-    src: url('/assets/fonts/NexaRegular.eot');
-    src: url('/assets/fonts/NexaRegular.eot?#iefix') format('embedded-opentype'),
-        url('/assets/fonts/NexaRegular.woff2') format('woff2'),
-        url('/assets/fonts/NexaRegular.woff') format('woff'),
-        url('/assets/fonts/NexaRegular.ttf') format('truetype'),
-        url('/assets/fonts/NexaRegular.svg#NexaRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
+  font-family: 'Nexa';
+  src: url('/assets/fonts/NexaRegular.eot');
+  src:
+    url('/assets/fonts/NexaRegular.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/NexaRegular.woff2') format('woff2'),
+    url('/assets/fonts/NexaRegular.woff') format('woff'),
+    url('/assets/fonts/NexaRegular.ttf') format('truetype'),
+    url('/assets/fonts/NexaRegular.svg#NexaRegular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Nexa; }
+/* ===========================
+   Variables de diseño (tema)
+   =========================== */
 
+:root {
+  /* Colores base */
+  --color-bg: #f3f4f6;
+  --color-surface: #ffffff;
+  --color-primary: #1d4ed8;
+  --color-primary-soft: #e0ebff;
+  --color-accent: #0d9488;
+
+  --color-text: #111827;
+  --color-text-muted: #6b7280;
+
+  --color-border: #e5e7eb;
+
+  --color-danger: #dc2626;
+  --color-warning: #d97706;
+  --color-success: #16a34a;
+
+  /* Bordes y sombras */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.06);
+
+  /* Espaciados */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+
+  /* Tipografía */
+  --font-family-base: 'Nexa', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', sans-serif;
+}
+
+/* ===========================
+   Reset / base
+   =========================== */
+
+html,
+body {
+  height: 100%;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family-base);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Tipografía general */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-family: 'Nexa-Bold', var(--font-family-base);
+  color: var(--color-text);
+}
+
+p {
+  margin: 0 0 0.5rem;
+  color: var(--color-text);
+}
+
+small {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* Enlaces */
+
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ===========================
+   Layout genérico de página
+   =========================== */
+
+.page {
+  min-height: 100vh;
+  padding: var(--spacing-xl);
+}
+
+.page-header {
+  margin-bottom: var(--spacing-lg);
+}
+
+.page-title {
+  font-size: 1.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+/* ===========================
+   Cards / contenedores
+   =========================== */
+
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--spacing-md);
+}
+
+.card-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.card-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* ===========================
+   Botones
+   =========================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+
+  transition:
+    transform 0.08s ease,
+    box-shadow 0.08s ease,
+    background 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.35);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--color-primary);
+  color: var(--color-primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--color-primary-soft);
+}
+
+/* ===========================
+   Formularios
+   =========================== */
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.form-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+.form-control {
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  background: #fff;
+  font-size: 0.9rem;
+  font-family: var(--font-family-base);
+}
+
+.form-control:focus {
+  outline: 2px solid var(--color-primary-soft);
+  border-color: var(--color-primary);
+}
+
+/* Angular: inputs inválidos tocados */
+.ng-invalid.ng-touched .form-control,
+.form-control.ng-invalid.ng-touched {
+  border-color: var(--color-danger);
+}
+
+/* Mensajes de error (tu invalid-feedback adaptado al tema) */
 .invalid-feedback {
-    display: block!important;
-    width: 100%;
-    font-size: 0.75rem;
-    color: #ff5b5b;
-    font-family: Nexa;
-    text-align: left;
+  display: block !important;
+  width: 100%;
+  font-size: 0.75rem;
+  color: var(--color-danger);
+  font-family: var(--font-family-base);
+  text-align: left;
+}
+
+/* ===========================
+   Tablas
+   =========================== */
+
+.table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.table thead {
+  background: #eef2ff;
+}
+
+.table th,
+.table td {
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.table tbody tr:hover {
+  background: #f9fafb;
+}
+
+/* ===========================
+   Utilidades pequeñas
+   =========================== */
+
+.text-muted {
+  color: var(--color-text-muted);
+}
+
+.text-danger {
+  color: var(--color-danger);
+}
+
+.text-success {
+  color: var(--color-success);
+}
+
+.mt-sm { margin-top: var(--spacing-sm); }
+.mt-md { margin-top: var(--spacing-md); }
+.mt-lg { margin-top: var(--spacing-lg); }
+
+.mb-sm { margin-bottom: var(--spacing-sm); }
+.mb-md { margin-bottom: var(--spacing-md); }
+.mb-lg { margin-bottom: var(--spacing-lg); }
+
+// Quitar TODO el scroll horizontal
+html, body {
+  overflow-x: hidden;
+}
+
+/* Snackbar para reemplazar window.alert */
+.mat-mdc-snack-bar-container.buap-alert-snackbar {
+  background: #323232 !important;   /* fondo único */
+  color: #ffffff !important;
+
+  border-radius: 10px !important;
+  padding: 12px 24px !important;
+  min-width: 420px !important;
+  max-width: 520px !important;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* 🔹 Quitar el “contenedor” interno */
+.mat-mdc-snack-bar-container.buap-alert-snackbar .mdc-snackbar__surface {
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important; /* usamos el radius del contenedor externo */
+}
+
+.mat-mdc-snack-bar-container.buap-alert-snackbar .mdc-snackbar__label {
+  font-family: Nexa, sans-serif;
+  font-size: 18px;
+}
+
+.mat-mdc-snack-bar-container.buap-alert-snackbar .mat-mdc-snack-bar-action {
+  font-family: 'Nexa-Bold', sans-serif!important;
+  font-size: 15px;
+  text-transform: uppercase;
 }

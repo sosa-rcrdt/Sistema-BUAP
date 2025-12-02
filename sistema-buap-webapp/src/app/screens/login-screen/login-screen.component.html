@@ -1,40 +1,82 @@
-<section class="login">
-  <div class="wrapper">
-    <!-- Sección izquierda con la imagen de fondo y los íconos -->
-    <div class="section-left">
-      <img src="/assets/images/Buap.png" alt="" class="logo-buap">
-      <img src="/assets/images/FCCBuap.png" alt="" class="logo-fcc">
+<section class="login-page">
+  <div class="login-layout">
+    <!-- Columna izquierda con fondo y logos -->
+    <div class="login-left">
+      <div class="login-left-inner">
+        <img src="/assets/images/Buap.png" alt="BUAP" class="login-logo-buap" />
+        <img src="/assets/images/FCCBuap.png" alt="Facultad de Ciencias de la Computación" class="login-logo-fcc" />
+      </div>
     </div>
-    <!-- Sección derecha con el formulario de inicio de sesión -->
-    <div class="section-right">
-      <div class="card">
-        <div class="card-body">
-          <h3 class="title">INICIO DE SESIÓN</h3>
-          <div class="container-inputs">
-            <div class="pt-3 mv-3">
-              <input type="email" [(ngModel)]="username" class="form-control" id="email" placeholder="Correo electrónico">
-              <!-- <div *ngIf="errors.username" class="invalid-feedback">{{ errors.username }}</div> -->
-            </div>
 
-            <div class="pt-3 mb-3">
-              <div class="input-group input-group-merge">
-                <input type="{{type}}" [(ngModel)]="password" id="password" name="password_user" class="form-control pwd" placeholder="Contraseña" (keyup.enter)="login()">
-                <div class="input-group-text" id="show-password" data-password="false">
-                  <i *ngIf="type == 'password'" class="bi bi-eye-fill" (click)="showPassword()"></i>
-                  <i *ngIf="type == 'text'" class="bi bi-eye-slash-fill" (click)="showPassword()"></i>
-                </div>
+    <!-- Columna derecha con el formulario -->
+    <div class="login-right">
+      <div class="card login-card">
+        <div class="card-body login-card-body">
+          <h1 class="login-title">Inicio de sesión</h1>
+
+          <form class="login-form" (ngSubmit)="login()">
+            <!-- Correo -->
+            <div class="form-field">
+              <label class="form-label" for="email">Correo electrónico</label>
+              <input
+                type="email"
+                [(ngModel)]="username"
+                name="email"
+                id="email"
+                class="form-control"
+                placeholder="Correo electrónico"
+              />
+              <!-- Si quieres mostrar error:
+              <div *ngIf="errors.username" class="invalid-feedback">
+                {{ errors.username }}
               </div>
-              <div *ngIf="errors.password" class="invalid-feedback">{{ errors.password }}</div>
+              -->
             </div>
 
-            <div class="mb-3">
-              <label class="form-check-label" for="checkbox-signin">Olvidé mi contraseña</label>
+            <!-- Contraseña -->
+            <div class="form-field">
+              <label class="form-label" for="password">Contraseña</label>
+              <div class="password-wrapper">
+                <input
+                  [type]="type"
+                  [(ngModel)]="password"
+                  id="password"
+                  name="password_user"
+                  class="form-control password-input"
+                  placeholder="Contraseña"
+                  (keyup.enter)="login()"
+                />
+                <button
+                  type="button"
+                  class="password-toggle"
+                  (click)="showPassword()"
+                  aria-label="Mostrar u ocultar contraseña"
+                >
+                  <i *ngIf="type === 'password'" class="bi bi-eye-fill"></i>
+                  <i *ngIf="type === 'text'" class="bi bi-eye-slash-fill"></i>
+                </button>
+              </div>
+              <div *ngIf="errors.password" class="invalid-feedback">
+                {{ errors.password }}
+              </div>
             </div>
-            <div class="d-flex flex-column align-items-center mb-3 w-100" style="text-align: center;">
-              <button class="btn btn-primary" type="submit" (click)="login()">Iniciar sesión</button>
-              <label class="form-check-label pt-3" for="checkbox-signin" (click)="registrar()">Registrarse</label>
+
+            <!-- Olvidé mi contraseña (texto por ahora, sin lógica) -->
+            <button type="button" class="login-link">
+              Olvidé mi contraseña
+            </button>
+
+            <!-- Acciones -->
+            <div class="login-actions">
+              <button class="btn btn-primary" type="submit">
+                Iniciar sesión
+              </button>
+
+              <button type="button" class="login-link" (click)="registrar()">
+                Registrarse
+              </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </div>
